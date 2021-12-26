@@ -27,6 +27,30 @@ The firewall system is a combination of:
  - per second log file IPv4 blocker
  - pre-generated block lists
 
+All the shell scripts are written for `#!/bin/sh`, so they should work on any POSIX compliant platform with a shell, including non-Linux systems.
+
+
+## SSFW Prerequsites
+
+For the PHP viewer scripts any version of PHP will work, as long as it can write its own files and contents. Everything else uses _off-the-shelf_ POSIX commands:
+
+ - `$$` (the currently running script process ID)
+ - `ls -1`
+ - `grep`
+ - `cut`
+ - `tail`
+ - `sort`
+ - `uniq` (only used once with a 10 line tail)
+ - `date +s%N%` `date -Iseconds` `date -Ihours`
+ - `sed`
+ - `find -mtime -1` (`-mtime` works with BusyBox)
+ - `mkdir -p`
+ - `chmod www:www` (where the script is run as `root`)
+ - `crontab` (or any "cronjob" service)
+ - `php` (any version with file write access)
+
+NOTE: BusyBox does not support "nanoseconds" output for the `date` command, but it does not "error out" either or otherwise break the scripts. Because BusyBox `find` command has limited time support, we use the `-mtime` option (as opposed to other more appropriate `-?time` options). Also `ls -1` is prefered over `sort` as it requires less memory, and is therefore lighter and faster (due to `ls` having human-readable sorted output by default).
+
 
 ## SSFW Block Lists
 
@@ -62,12 +86,15 @@ A certain amount of care needs to be taken, especially on a shared IP address. A
 
 ## Securing SSFW
 
-SSFW uses security by obscurity, which is successful _only_ if unique installation presets are used. The repo software is setup to _not_ function unless ionstalled.
+SSFW uses security by obscurity, which is successful _only_ if unique installation presets are used. The repo software is setup to _not_ function unless installed.
 
 The scripts are designed to be used as the `root` user, and function from within a webserver filesystem tree as the `www` user, while none of those scripts contain any `sudo` commands. The SSH "Gerka" requires running as `root` because they access the system log file which by default, even reading is limited to `root` user.
 
 It may be possible to _adjust_ this in the future, as is done with the default Nginx Access log file (by soft linking it into the web server filesystem tree SSFW log directory).
 
+Only one script (that generates addition 404 urls) works outside of the installed `~tools-dir`, and that is so it can be used to process other non-default location web server error logs. All other scripts must be run from `~tools-dir`, and that path is _NOT_ included in the $PATH environment variable, as both these conditions help with security (you have to know SSFW is present _AND_ ahere it is).
+
+Only actual scripts can be run from the `~cron-dir`, not links to scripts, _AND_ they must be owned by the webserver user, again, to help secure any expoit usage. However the `~cron-dir` is pre-setup with "hourly", "daily", "weekly", and "monthly" sub-folders to make server maintenance easier, and again, only "real" scripts will be executed.
 
 ## SSFW Installation
 
