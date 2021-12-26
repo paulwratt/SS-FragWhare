@@ -27,10 +27,10 @@ The firewall system is a combination of:
  - per second log file IPv4 blocker
  - pre-generated block lists
 
-All the shell scripts are written for `#!/bin/sh`, so they should work on any POSIX compliant platform with a shell, including non-Linux systems.
+All the shell scripts are written for `#!/bin/sh` and use the `.sh` extention, so they should work on any POSIX compliant platform with a shell, including non-Linux based systems.
 
 
-## SSFW Prerequsites
+## SSFW Prerequisites
 
 For the PHP viewer scripts any version of PHP will work, as long as it can write its own files and contents. Everything else uses _off-the-shelf_ POSIX commands:
 
@@ -49,7 +49,12 @@ For the PHP viewer scripts any version of PHP will work, as long as it can write
  - `crontab` (or any "cronjob" service)
  - `php` (any version with file write access)
 
-NOTE: BusyBox does not support "nanoseconds" output for the `date` command, but it does not "error out" either or otherwise break the scripts. Because BusyBox `find` command has limited time support, we use the `-mtime` option (as opposed to other more appropriate `-?time` options). Also `ls -1` is prefered over `sort` as it requires less memory, and is therefore lighter and faster (due to `ls` having human-readable sorted output by default).
+NOTES:
+
+ - BusyBox does not support "nano-seconds" output for the `date` command, but it does not "error out" either or otherwise break the scripts (only used to calculate shell script execution times).
+ - Because BusyBox `find` command has limited time support, we use the `-mtime` option (as opposed to other more appropriate `-?time` options).
+ - Also `ls -1` is prefered over `sort` as it requires less memory, and is therefore lighter and faster (due to `ls` having human-readable sorted output by default).
+ - All the shell scripts use the `.sh` extension.
 
 
 ## SSFW Block Lists
