@@ -32,9 +32,11 @@ The firewall system is a combination of:
 
 The IPv4 and URL block lists are gathered from actual hack attempts. The resulting IPv4 addresses are then assessed (manually) for assignment location and entity, where a blocked range may be generated as a result.
 
-Not all blocked ranges are limited to assigned entity ranges (CID), sometimes analysis shows a higher range exclusion may be more practical.
+Not all blocked ranges are limited to assigned entity ranges (CIDR), sometimes analysis shows a higher or multiple range exclusion may be more practical.
 
-Web server URL's are mostly due to known exploit paths, known paths on weak hardware or firmware, or common alternate paths to web software.
+Web server URL's are mostly due to known exploit paths, known paths on weak hardware or firmware, or common alternate paths to web software. All were collect from actual attempts, of which there are clearly lists available.
+
+Pre-generated block lists are available archived in both text format, and as filesystem entries.
 
 
 ## SSFW Limitations
@@ -138,5 +140,7 @@ All other SSFW folders are _not readable_ by the webserver. The following are se
  - PHP scripts in `~tools_dir/..`
  - SH scripts in  `~tools_dir/../cron_dir/`
 
+
+---
 
 (C) 2021/2022 - Paul Wratt
