@@ -18,6 +18,9 @@ Automated Network Threat Response
 
 https://forum.level1techs.com/t/automated-network-threat-response/174480
 
+Devember 2021 project entry
+https://forum.level1techs.com/t/devember-2021-brutally-simple-firewall/179875
+
 
 ## What is SSFW
 
