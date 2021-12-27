@@ -4,7 +4,7 @@ SSFW is a super simple firewall, based around `ip` command.
 
 Actually its a slightly brutal firewall system (ie FragHaus - "Whare" (farry) is Maori for House). Individual "Gerka" scripts maintain the defence, and can be adjusted from "soft" defence, to "brutal" defence.
 
-The standalone SS-FragWhare "Gerka" script is available on the LevelOneTechs Forum, along with some studies and analysis on the IP addresses, ranges, timings, and URL attempts. There is also a commentary on why and how it came about, aas well as some resulting associated filesystem driver development discussions in the later posts of the thread.
+The standalone SS-FragWhare "Gerka" script is available on the LevelOneTechs Forum, along with some studies and analysis on the IP addresses, ranges, timings, and URL attempts. There is also a commentary on why and how it came about, as well as some resulting associated filesystem driver development discussions in the later posts of the thread.
 
 **Super Simple SSHd IP blocking**
 
@@ -31,12 +31,12 @@ The firewall system is a combination of:
  - per second log file IPv4 blocker
  - pre-generated block lists
 
-All the shell scripts are written for `#!/bin/sh` and use the `.sh` extention, so they should work on any POSIX compliant platform with a shell, including non-Linux based systems.
+SSFW uses shell scripts are written for `#!/bin/sh` and use the `.sh` extention, so they should work on any POSIX compliant platform with a shell, including non-Linux based systems.
 
 
 ## SSFW Prerequisites
 
-For the PHP viewer scripts any version of PHP will work, as long as it can write its own files and contents. Everything else uses _off-the-shelf_ POSIX commands:
+For the PHP viewer scripts any version of PHP will work, as long as it can write its own files and contents. Everything else uses _off-the-shelf_ commands:
 
  - `ip add blackhole` (only accessible as `root`)
  - `$$` (the currently running script process ID)
@@ -68,14 +68,16 @@ The IPv4 and URL block lists are gathered from actual hack attempts. The resulti
 
 Not all blocked ranges are limited to assigned entity ranges (CIDR), sometimes analysis shows a higher or multiple range exclusion may be more practical.
 
-Web server URL's are mostly due to known exploit paths, known paths on weak hardware or firmware, or common alternate paths to web software. All were collect from actual attempts, of which there are clearly lists available.
+Web server URL's are mostly due to known exploit paths, known paths on weak hardware or firmware, or common alternate paths to web software. All were collect from actual attempts, of which there are clearly lists available (based on log file analysis).
 
-Pre-generated block lists are available archived in both text format, and as filesystem entries.
+Pre-generated block lists are available archived in both text format, and as filesystem entries, to make it easier to adapt to any one particular system.
+
+The IPv4 blocking script has a `--load` option that can be used at boot time, to reinstate the block list. The `ip` command does not maintain data across reboots, which is one of the main reasons for other firewall software (like `iptables`).
 
 
 ## SSFW Limitations
 
-At the moment only IPv4 addresses are processed and blocked.
+At the moment only IPv4 addresses are processed and blocked. It is planned to allow IPv6 blocking, but there is also an inherant problem with this on a per IP address basis, and that is there are exponentially more individual addresses, and so blocking ranges instead is more useful, and frugal with in-kernel memory space (which is how `ip` entries are processed). 
 
 Currently only Nginx log files have been tested against, with the target of most common (or any) web servers being added, since the analizers are SH shell scripts.
 
