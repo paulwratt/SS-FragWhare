@@ -81,7 +81,7 @@ At the moment only IPv4 addresses are processed and blocked. It is planned to al
 
 Currently only Nginx log files have been tested against, with the target of most common (or any) web servers being added, since the analizers are SH shell scripts.
 
-In actual use, a web server without any content, rotates its log files at a minimum of every three hours (3 hrs), if the server is being hit relatively hard (ie. multiple per second hits from the same or different IPv4 locations).
+In actual use, a web server without any content, rotates its `/var/log/messages` log files at a minimum of every three hours (3 hrs), if the server is being hit relatively hard (ie. multiple per second hits from the same or different IPv4 locations).
 
 Currently only the `sshd` log files are analized via service processes ("Gerka" scripts). The success of that script (via its per second setting) is (to a certain degree) dependant on some conditions which are out of any scope of control.
 
