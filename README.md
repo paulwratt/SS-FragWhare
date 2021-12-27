@@ -6,19 +6,19 @@ Actually its a slightly brutal firewall system (ie FragHaus - "Whare" (farry) is
 
 The standalone SS-FragWhare "gerka" script is available on the Level1Techs Forum, along with some studies and analysis on the IP address, ranges, timings, and URL attepmts. The is also a commentary on why it came about, and some associated filesystem driver development discussions.
 
-Super Simple SSHd IP blocking
+**Super Simple SSHd IP blocking**
 
 https://forum.level1techs.com/t/automated-network-threat-response/174480/12
 
-A Simple hits/sec Algorythim
+**A Simple hits/sec Algorythim**
 
 https://forum.level1techs.com/t/automated-network-threat-response/174480/11
 
-Automated Network Threat Response
+**Automated Network Threat Response**
 
 https://forum.level1techs.com/t/automated-network-threat-response/174480
 
-Devember 2021 project entry
+**Devember 2021 Project Entry**
 
 https://forum.level1techs.com/t/devember-2021-brutally-simple-firewall/179875
 
