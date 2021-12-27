@@ -93,7 +93,9 @@ Currently, the `sshd` key exchange (`kex`) failure check and resulting IPv4 bloc
 
 _ANY_ failed `sshd` attempt will also be blocked by the SSH "gerka" service, based on the number of times the that IPv4 is present in the log file, and the setting in the script. A setting of 1 is _brutal_ , and actually means 2 entries. This is fine because `sshd` logs a _disconnect_ for every _failed_ attempt to login.
 
-So a certain amount of care needs to be taken, especially on a shared IP address. A custom removal script should be maintained for multiple user SSH access. Linode's default remote SSH access allows standard SSH failures that would normally cause critical access denial to be mitigated, but this is a per hosting service, not gaurenteed to be available.
+So a certain amount of care needs to be taken, especially on a shared IP address. A custom removal script should be maintained for multiple user SSH access. Linode's control panel remote SSH access (weblish) allows standard SSH failures, that would normally cause critical access denial, to be mitigated. However this is a per hosting service, not gaurenteed to be available, so a regular "check and remove" process or script is more useful to protect against known IP address failures.
+
+The webserver _known urls_ (or _haxor urls_) are generated manually, and by default, in an additive fashion, meaning you can loose your original referenced logs and still maintain an ever growing list. Web based development is not a problem on a server protected with SSFW, as long as you dont generate 404, 405 errors or a 200 reponse with 0 bytes returned (ie. just the header).
 
 At least on Linode, there is no correlation between bandwith usage and `sshd` attempts or webserver returned data, except to say that it can indicate a sustained presence over time. By default it climbs by 8Kbit/s increments. Also note that the "here have this 4.5Gb file for your troubles" _brutality bonus_ served via the webserver _will not be present_ until _after_ the connection is closed. (I believe I have seen on pull of 2.5Gb, which is enough to lock up the probing process).
 
