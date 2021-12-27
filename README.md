@@ -105,11 +105,11 @@ SSFW uses security by obscurity, which is successful _only_ if unique installati
 
 If you are not an advance *nix user or webserver administrator, then I suggest you look through the _known urls_ block list to see what _NOT_ to use as presets (because they are common targets for probes and resulting _haxor url_ attempts).
 
-The scripts are designed to be used as the `root` user, and function from within a webserver filesystem tree as the `www` user, while none of those scripts contain any `sudo` commands. The SSH "Gerka" requires running as `root` because they access the system log file which by default, even reading is limited to `root` user.
+The scripts are designed to be used as the `root` user, and function from within a webserver filesystem tree owned by the `www` user (or `www-data` user), however none of those scripts contain any `sudo` commands. The SSH "Gerka" requires running as `root` because they access the system log file which by default, even reading is limited to `root` user.
 
-It may be possible to _adjust_ this in the future, as is done with the default Nginx Access log file (by soft linking it into the web server filesystem tree SSFW log directory).
+It may be possible to _adjust_ this in the future, as is done with the default Nginx Access log file (by soft linking it into the web server filesystem tree SSFW log directory, and then setting ownership of that link to the webserver username and group).
 
-Only one script (that generates addition 404 urls) works outside of the installed `~tools-dir`, and that is so it can be used to process other non-default location web server error logs. All other scripts must be run from `~tools-dir`, and that path is _NOT_ included in the $PATH environment variable, as both these conditions help with security (you have to know SSFW is present _AND_ ahere it is).
+Only one script (that generates addition 404 urls) works outside of the installed `~tools-dir`, and that is so it can be used to process other non-default location webserver error logs. All other scripts must be run from `~tools-dir`, and that path is _NOT_ included in the $PATH environment variable, as both these conditions help with security (you have to know SSFW is present _AND_ ahere it is).
 
 Only actual scripts can be run from the `~cron-dir`, not links to scripts, _AND_ they must be owned by the webserver user, again, to help secure any expoit usage. However the `~cron-dir` is pre-setup with "hourly", "daily", "weekly", and "monthly" sub-folders to make server maintenance easier, and again, only "real" scripts will be executed.
 
