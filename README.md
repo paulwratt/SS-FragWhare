@@ -131,7 +131,7 @@ ssfw-install.sh '/web/server/root' 'http://some.url/' 'a/path/or/not/' 'unique_s
 
 ## SSFW Structure
 
-Before posting the SS:FragWhare system in a GIT repository, I tested it for about 6 months, and the last tweak was made 2 months ago (a fix in the IPv4 regex for `grep`).
+Before posting the SS:FragWhare firewall system in a GIT repository, I tested it for about 6 months (7 months in 2 days), and the last tweak was made 2 months ago (a fix in the IPv4 regex for `grep`).
 
 ```
 /web/server/root/
