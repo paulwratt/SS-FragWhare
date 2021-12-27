@@ -83,7 +83,7 @@ Currently only Nginx log files have been tested against, with the target of most
 
 In actual use, a web server without any content, rotates its `/var/log/messages` log files at a minimum of every three hours (3 hrs), if the server is being hit relatively hard (ie. multiple per second hits from the same or different IPv4 locations).
 
-Currently only the `sshd` log files are analized via service processes ("Gerka" scripts). The success of that script (via its per second setting) is (to a certain degree) dependant on some conditions which are out of any scope of control.
+Currently only the `sshd` log entries are analysed via _service_ processes ("Gerka" scripts). The success of that script, via its per second setting, is (to a certain degree) dependant on some conditions which are out of any scope of control.
 
 For example, on a 1Gb single core x64 VM running Alpine Linux, a setting of less that 5 seconds can cause the script to miss heavy (per second) `sshd` hits, and maybe caused by underlying system or hardware write caching limitations. IE if they are too fast, the time between actual presence of a log entry will be longer than the attack attepts.
 
