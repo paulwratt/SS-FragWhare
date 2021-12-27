@@ -109,7 +109,7 @@ The scripts are designed to be used as the `root` user, and function from within
 
 It may be possible to _adjust_ this in the future, as is done with the default Nginx Access log file (by soft linking it into the web server filesystem tree SSFW log directory, and then setting ownership of that link to the webserver username and group).
 
-Only one script (that generates addition 404 urls) works outside of the installed `~tools-dir`, and that is so it can be used to process other non-default location webserver error logs. All other scripts must be run from `~tools-dir`, and that path is _NOT_ included in the $PATH environment variable, as both these conditions help with security (you have to know SSFW is present _AND_ ahere it is).
+Only one script (that generates addition 404 urls for the webserver block list base) works outside of the installed `~tools-dir`, and that is so it can be used to process other non-default location webserver error logs. All other scripts must be run from `~tools-dir`, and that path is _NOT_ included in the $PATH environment variable, as both these conditions help with security (ie. you have to know SSFW is present _AND_ where it is).
 
 Only actual scripts can be run from the `~cron-dir`, not links to scripts, _AND_ they must be owned by the webserver user, again, to help secure any expoit usage. However the `~cron-dir` is pre-setup with "hourly", "daily", "weekly", and "monthly" sub-folders to make server maintenance easier, and again, only "real" scripts will be executed.
 
