@@ -168,7 +168,6 @@ chown www:www -r /web/server/root
 chmod a+x -r /web/server/root/uniq_svr-tools_dir
 chmod a+x -r /web/server/root/uniq_svr-cron_dir
 chmod a+x -r /web/server/root/uniq_svr-*.php
-
 ```
 
 The IPv4 recorded in `../b/ipv4` is a filename, where the file contents contains the human readable date when said IPv4 was blocked, which may be different from the `stat` date of the file, due to the fact that the `cron` jobs are for `www` user, but the `ip` command requires `root`, and we dont use `sudo` (just incase someone hacks your `www` user).
