@@ -4,7 +4,7 @@ SSFW is a super simple firewall, based around `ip` command.
 
 Actually its a slightly brutal firewall system (ie FragHaus - "Whare" (farry) is Maori for House). Individual "Gerka" scripts maintain the defence, and can be adjusted from "soft" defence, to "brutal" defence.
 
-The standalone SS-FragWhare "gerka" script is available on the Level1Techs Forum, along with some studies and analysis on the IP address, ranges, timings, and URL attepmts. The is also a commentary on why it came about, and some associated filesystem driver development discussions.
+The standalone SS-FragWhare "Gerka" script is available on the LevelOneTechs Forum, along with some studies and analysis on the IP addresses, ranges, timings, and URL attempts. There is also a commentary on why and how it came about, aas well as some resulting associated filesystem driver development discussions in the later posts of the thread.
 
 **Super Simple SSHd IP blocking**
 
