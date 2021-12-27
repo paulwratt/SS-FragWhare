@@ -1,8 +1,8 @@
 # SS-FragWhare
 
-SSFW is a super simple firewall, based around `ip` binary.
+SSFW is a super simple firewall, based around `ip` command.
 
-Actually its a slightly brutal firewall system (ie FragHaus - "Whare" (farry) is Maori for House). Individual "Gerkas" scripts maintain the defence, and can be adjusted from "soft" defence, to "brutal" defence.
+Actually its a slightly brutal firewall system (ie FragHaus - "Whare" (farry) is Maori for House). Individual "Gerka" scripts maintain the defence, and can be adjusted from "soft" defence, to "brutal" defence.
 
 The standalone SS-FragWhare "gerka" script is available on the Level1Techs Forum, along with some studies and analysis on the IP address, ranges, timings, and URL attepmts. The is also a commentary on why it came about, and some associated filesystem driver development discussions.
 
@@ -37,6 +37,7 @@ All the shell scripts are written for `#!/bin/sh` and use the `.sh` extention, s
 
 For the PHP viewer scripts any version of PHP will work, as long as it can write its own files and contents. Everything else uses _off-the-shelf_ POSIX commands:
 
+ - `ip add blackhole` (only accessible as `root`)
  - `$$` (the currently running script process ID)
  - `ls -1`
  - `grep`
