@@ -79,7 +79,7 @@ The IPv4 blocking script has a `--load` option that can be used at boot time, to
 
 At the moment only IPv4 addresses are processed and blocked. It is planned to allow IPv6 blocking, but there is also an inherant problem with this on a per IP address basis, and that is there are exponentially more individual addresses, and so blocking ranges instead is more useful, and frugal with in-kernel memory space (which is how `ip` entries are processed). 
 
-Currently only Nginx log files have been tested against, with the target of most common (or any) web servers being added, since the analizers are SH shell scripts.
+Currently only Nginx log files have been tested against, with the target of most common (or any) web servers being added, since the analysers are SH shell scripts, this task is relatively simple.
 
 In actual use, a web server without any content, rotates its `/var/log/messages` log files at a minimum of every three hours (3 hrs), if the server is being hit relatively hard (ie. multiple per second hits from the same or different IPv4 locations).
 
