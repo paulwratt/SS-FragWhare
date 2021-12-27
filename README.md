@@ -85,11 +85,11 @@ In actual use, a web server without any content, rotates its `/var/log/messages`
 
 Currently only the `sshd` log entries are analysed via _service_ processes ("Gerka" scripts). The success of that script, via its per second setting, is (to a certain degree) dependant on some conditions which are out of any scope of control.
 
-For example, on a 1Gb single core x64 VM running Alpine Linux, a setting of less that 5 seconds can cause the script to miss heavy (per second) `sshd` hits, and maybe caused by underlying system or hardware write caching limitations. IE if they are too fast, the time between actual presence of a log entry will be longer than the attack attepts.
+For example, on a 1Gb single core x64 VM running Alpine Linux, after a few thousand blocked IP address have been processed, a setting of less that 5 seconds can cause the script to miss heavy (per second) `sshd` hits, and maybe caused by underlying system or hardware write caching limitations. ie. if they are too fast, the time between actual presence of a log entry will be longer than the attack attempts.
 
-Also over time, one of the checks will incrementally consume more processor CPU % usage (but not memory % usage). Cleaning of the log directory at least every month solves (resets) this problem.
+Also over time, one of the checks will incrementally consume more processor CPU % usage (but not memory % usage). Cleaning of the log directory at least every month solves (resets) this problem. A fresh install of SSFW will consume about 0.15% of CPU, while after six months the end of month processing can consume about 10-15% (on a single core VM) on-the-hour via the cronjob processes.
 
-Currently the `sshd` key exchange failure check and resulting IPv4 block is a manual operation. If you attempt to initialize an `ssh kex` and it fails, that IPv4 will be present in the _faulures_ sent to the system logs.
+Currently, the `sshd` key exchange (`kex`) failure check and resulting IPv4 block is a manual operation. Realistically this check only needs to be done once per every second log rotation (when there is only one backup log file). If you attempt to initialize your own SSH `kex` and it fails, that IPv4 will be present in the _failures_ sent to the system logs.
 
 _ANY_ failed `sshd` attempt will also be blocked by the SSH "gerka" service, based on the number of times the that IPv4 is present in the log file, and the setting in the script. A setting of 1 is _brutal_ , and actually means 2 entries. This is fine because `sshd` logs a _disconnect_ for every _failed_ attempt to login.
 
