@@ -118,6 +118,7 @@ Only actual scripts can be run from the `~cron-dir`, not links to scripts, _AND_
 Certain information needs to be known _before_ running the `install.sh` script:
 
  - webserver root
+ - webserver user and group (`www:www` or `www-data:www-data`)
  - a domain or IP address (used to create URL's)
  - location within webserver root (maps path to URL)
  - SSFW unique folder prefix (folder and script access)
@@ -132,7 +133,7 @@ ssfw-install.sh '/web/server/root' 'http://some.url/' 'a/path/or/not/' 'unique_s
 
 Before posting the SS:FragWhare system in a GIT repository, I tested it for about 6 months, and the last tweak was made 2 months ago (a fix in the IPv4 regex for `grep`).
 
-``
+```
 /web/server/root/
   uniq_svr-php_scripts.php
   uniq_svr-tools_dir/
@@ -168,7 +169,7 @@ chmod a+x -r /web/server/root/uniq_svr-tools_dir
 chmod a+x -r /web/server/root/uniq_svr-cron_dir
 chmod a+x -r /web/server/root/uniq_svr-*.php
 
-``
+```
 
 The IPv4 recorded in `../b/ipv4` as a filename, where the file contents contains the human readable date when said IPv4 was blocked, which may be different from the `stat` date of the file, due to the fact that the `cron` jobs are for `www` user, but the `ip` command requires root, and we dont use `sudo` (just incase someone hacks your `www` user).
 
