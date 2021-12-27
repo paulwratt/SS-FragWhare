@@ -97,11 +97,13 @@ So a certain amount of care needs to be taken, especially on a shared IP address
 
 The webserver _known urls_ (or _haxor urls_) are generated manually, and by default, in an additive fashion, meaning you can loose your original referenced logs and still maintain an ever growing list. Web based development is not a problem on a server protected with SSFW, as long as you dont generate 404, 405 errors or a 200 reponse with 0 bytes returned (ie. just the header).
 
-At least on Linode, there is no correlation between bandwith usage and `sshd` attempts or webserver returned data, except to say that it can indicate a sustained presence over time. By default it climbs by 8Kbit/s increments. Also note that the "here have this 4.5Gb file for your troubles" _brutality bonus_ served via the webserver _will not be present_ until _after_ the connection is closed. (I believe I have seen on pull of 2.5Gb, which is enough to lock up the probing process).
+At least on Linode, there is no correlation between bandwith usage and `sshd` attempts or webserver returned data, except to say that it can indicate a sustained presence over time. By default it climbs by 8Kbit/s increments. Also note that the "here have this 4.5Gb file for your troubles" _brutality bonus_ served via the webserver _will not be present_ until _after_ the connection is closed. (I believe I have seen one pull of 2.5Gb, which is enough to lock up the probing process).
 
 ## Securing SSFW
 
-SSFW uses security by obscurity, which is successful _only_ if unique installation presets are used. The repo software is setup to _not_ function unless installed.
+SSFW uses security by obscurity, which is successful _only_ if unique installation presets are used. The repo software is setup to _not_ function unless installed via the install script, which requires presets to be supplied. These presets affect the web server location, SSFW folder name, _and_ (optionally different) script names.
+
+If you are not an advance *nix user or webserver administrator, then I suggest you look through the _known urls_ block list to see what _NOT_ to use as presets (because they are common targets for probes and resulting _haxor url_ attempts).
 
 The scripts are designed to be used as the `root` user, and function from within a webserver filesystem tree as the `www` user, while none of those scripts contain any `sudo` commands. The SSH "Gerka" requires running as `root` because they access the system log file which by default, even reading is limited to `root` user.
 
