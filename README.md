@@ -170,7 +170,7 @@ chmod a+x -r /web/server/root/uniq_svr-cron_dir
 chmod a+x -r /web/server/root/uniq_svr-*.php
 ```
 
-The IPv4 recorded in `../b/ipv4` is a filename, where the file contents contains the human readable date when said IPv4 was blocked, which may be different from the `stat` date of the file, due to the fact that the `cron` jobs are for `www` user, but the `ip` command requires `root`, and we dont use `sudo` (just incase someone hacks your `www` user).
+The IPv4 recorded in `../b/ipv4` is a filename, where the file contents contains the human readable date when said IPv4 was blocked, which may be different from the `stat` date of the file, due to the fact that the `cron` jobs are for `www` user, but the `ip` command requires `root`, and we dont use `sudo` (just incase someone hacks your `www` user). The ranges are recorded in a dot-file (hidden) in `../b/ipv4`.
 
 Webserver readable access is given to the following SSFW folders (via `fancyindex` on Nginx):
 
