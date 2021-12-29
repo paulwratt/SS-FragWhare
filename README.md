@@ -127,8 +127,8 @@ Certain information needs to be known _before_ running the `install.sh` script:
 Example:
 
 ```
-SSFW_WEBROOT='/web/server/root' SSFW_WEBOWNER='www:www' SSFW_WEBURL='http://some.url/' \
-SSFW_SSFWROOT='a/path/or/not/' SSFW_PREFIX='unique_svr' SSFW_FILEPREFIX='' install.sh
+SSFW_WWWROOT='/web/server/root' SSFW_WWWOWNER='www:www' SSFW_WWWURL='http://some.url/' \
+SSFW_SSFWROOT='a/path/or/not/' SSFW_PREFIX='unique_svc' SSFW_FILEPREFIX='' install.sh
 ```
 
 ## SSFW Structure
