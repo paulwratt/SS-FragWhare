@@ -133,7 +133,7 @@ SSFW_SSFWROOT='a/path/or/not/' SSFW_PREFIX='unique_svc' SSFW_FILEPREFIX='' insta
 
 ## SSFW Structure
 
-Before posting the SS:FragWhare firewall system in a GIT repository, I tested it for about 6 months (7 months in 2 days), and the last tweak was made 2 months ago (a fix in the IPv4 regex for `grep`).
+Before posting the SS:FragWhare firewall system in a GIT repository, I tested it for about 6 months (7 months in 4 days time), and the last tweak was made 2 months ago (a fix in the IPv4 select regex for `grep`, and another different IPv4 lookup regex fix last night).
 
 ```
 /web/server/root/
