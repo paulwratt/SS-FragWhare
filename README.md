@@ -29,9 +29,9 @@ The firewall system is a combination of:
 
  - web server url "capture" list generator
  - per second log file IPv4 blocker
- - pre-generated block lists
+ - pre-generated block list data
 
-SSFW uses shell scripts are written for `#!/bin/sh` and use the `.sh` extention, so they should work on any POSIX compliant platform with a shell, including non-Linux based systems.
+SSFW uses shell scripts which are written for `#!/bin/sh` and use the `.sh` extention, so they should work on any POSIX compliant platform with a shell, including non-Linux based systems. You might want to start IPv4 block from a "clean slate" (lots of hosting services are blocked by ranges). You also might want to pre-scan the URL block list for common names and locations _NOT_ to use on your webserver.
 
 
 ## SSFW Prerequisites
@@ -40,26 +40,29 @@ For the PHP viewer scripts any version of PHP will work, as long as it can write
 
  - `ip add blackhole` (only accessible as `root`)
  - `$$` (the currently running script process ID)
- - `ls -1`
- - `grep`
- - `cut`
- - `tail`
- - `sort`
+ - `ls -1` (1 per line, default formatting output used)
+ - `echo -n` (used to join the `ip` output to IPv4 logs)
+ - `grep` (the heart if the IPv4 gathering and lookup)
+ - `cut`  (used extensively, cheap IPv4 formating check)
+ - `tail` (10 lines by deafult, but 20 should be fine too)
+ - `sort` (used as little as possible)
  - `uniq` (only used once with a 10 line tail)
  - `date +s%N%` `date -Iseconds` `date -Ihours`
- - `sed`
+ - `sed` (in pipes. only one script uses in-place editing)
  - `find -mtime -1` (`-mtime` works with BusyBox)
- - `mkdir -p`
- - `chmod www:www` (where the script is run as `root`)
+ - `mkdir -p` (could be a problem on BSD systems)
+ - `chown www:www` (where the script was run as `root`)
+ - `chmod a+x` (for the `install.sh` script)
  - `crontab` (or any "cronjob" service)
  - `php` (any version with file write access)
 
+
 NOTES:
 
- - BusyBox does not support "nano-seconds" output for the `date` command, but it does not "error out" either or otherwise break the scripts (only used to calculate shell script execution times).
- - Because BusyBox `find` command has limited time support, we use the `-mtime` option (as opposed to other more appropriate `-?time` options).
- - Also `ls -1` is prefered over `sort` as it requires less memory, and is therefore lighter and faster (due to `ls` having human-readable sorted output by default).
- - All the shell scripts use the `.sh` extension.
+ - BusyBox does not support "nano-seconds" (`%N`) output for the `date +%s%N` command, but it does not "error out" either or otherwise break the scripts (only used to calculate shell script execution times).
+ - BusyBox `find` command has limited time support options, so we use the `-mtime` option (as opposed to other more appropriate `-?time` options).
+ - Also `ls -1` is prefered over `sort` as it requires less memory, and is therefore lighter and faster (due to `ls` having human-readable ordered output by default).
+ - All the shell scripts use the `.sh` extension, and execute via `#!/bin/sh`.
 
 
 ## SSFW Block Lists
