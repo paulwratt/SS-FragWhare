@@ -25,6 +25,20 @@ A private handmade system would still be practical, backed by something like **P
 In the meantime, a "Fast _AND_ Lite" system equivalent to a firewall seemed feasible, and so **SSFW** or **SS:FragWhare**, a "super simple firewall", started life.
 
 
+### Installation Variables
+
+The `install.sh` script came last, but it will be the first thing you may notice as using a _non-standard_ for of parsing options or presets.
+
+ - Firstly, it is programatically easier to code evvironment variable checks than it is to process command line arguments.
+ - Secondly, it is easier to add default manipulations (not used here, they have to be unique anyway).
+ - Thridly, command line options could be used to generate random presets.
+ - Fourthly, it is easier to lockdown (or detect) optionals or presets that are empty.
+ - Fifthly, it means you read at least some of the documentation at installation time, guarenteeing some form of secure installation (or not, because you chose easily detectable presets - you have been warned).
+ - Lastly it is easier to programtically run the installer from somewhere else because all options are named and must be present at installation time.
+
+NOTE: this maybe inconvienient on some platforms where `export` is required before environment variables can be used, in which case, make sure you `unset` or otherwise remove them from the environment variable list, they are only used during installation, _NOT_ at runtime.
+
+
 ### File names not File contents
 
 The descission was made early on to be able to use _off-the-shelf_ command line tools to be able to quickly and easily analyse certain aspects of the blocking system, _especially_ if you were on a _single core CPU_ or a _low memory system_.
