@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd "SSFWROOT/PREFIX_tools-dir"
+cd "SSFWROOT/PREFIX_tools-dir";
 
 ./FILEPRE_process-messages-sshd.sh;
 ./FILEPRE_block-ipv4-sshd.sh 1;
