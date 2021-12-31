@@ -130,7 +130,7 @@ Certain information needs to be known _before_ running the `install.sh` script:
 
 Examples:
 ```
-SSFW_WWWROOT='/web/server/root' SSFW_WWWUSER='www:www' SSFW_WWWURL='http://some.url/' \
+SSFW_WWWROOT='/web/server/root' SSFW_WWWUSER='www-data:www-data' SSFW_WWWURL='http://some.url/' \
 SSFW_SSFWROOT='a/path/or/not' SSFW_PREFIX='unique-svc' SSFW_FILEPREFIX='' install.sh
 ```
 
