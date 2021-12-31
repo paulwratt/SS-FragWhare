@@ -121,7 +121,7 @@ Only actual scripts can be run from the `~cron-dir`, not links to scripts, _AND_
 Certain information needs to be known _before_ running the `install.sh` script:
 
  - webserver root
- - webserver user and group (`www:www` or `www-data:www-data`)
+ - a user and webserver group (`www:www` or `www-data:www-data`)
  - a domain or IP address (used to create URL's)
  - location within webserver root (maps path to URL)
  - SSFW unique folder prefix (folder and script access)
@@ -130,7 +130,7 @@ Certain information needs to be known _before_ running the `install.sh` script:
 Example:
 
 ```
-SSFW_WWWROOT='/web/server/root' SSFW_WWWOWNER='www:www' SSFW_WWWURL='http://some.url/' \
+SSFW_WWWROOT='/web/server/root' SSFW_WWWUSER='www:www' SSFW_WWWURL='http://some.url/' \
 SSFW_SSFWROOT='a/path/or/not/' SSFW_PREFIX='unique_svc' SSFW_FILEPREFIX='' install.sh
 ```
 
