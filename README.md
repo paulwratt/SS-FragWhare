@@ -127,11 +127,16 @@ Certain information needs to be known _before_ running the `install.sh` script:
  - SSFW unique folder prefix (folder and script access)
  - SSWF unique script prefix (optionally different)
 
-Example:
+Examples:
 
 ```
 SSFW_WWWROOT='/web/server/root' SSFW_WWWUSER='www:www' SSFW_WWWURL='http://some.url/' \
-SSFW_SSFWROOT='a/path/or/not/' SSFW_PREFIX='unique_svc' SSFW_FILEPREFIX='' install.sh
+SSFW_SSFWROOT='a/path/or/not' SSFW_PREFIX='unique-svc' SSFW_FILEPREFIX='' install.sh
+```
+
+```
+SSFW_WWWROOT='/web/server/root' SSFW_WWWUSER='www:www' SSFW_WWWURL='http://some.url/' \
+SSFW_SSFWROOT='' SSFW_PREFIX='' SSFW_FILEPREFIX='egfw-svc' install.sh --random
 ```
 
 ## SSFW Structure
