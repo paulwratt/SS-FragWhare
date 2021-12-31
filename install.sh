@@ -93,6 +93,7 @@ if [ "$SSFW_SSFWROOT" = "/" -o "$SSFW_SSFWROOT" = "" ]; then
 else
   echo -n "$WWWURL$SSFW_SSFWROOT/ = "
 fi ;
+SSFWHEAD="$SSFW_SSFWROOT" ;
 SSFWROOT="$(realpath "$WWWROOT/$SSFW_SSFWROOT" 2>/dev/null)"
 echo "$WWWROOT/$SSFW_SSFWROOT"
 
@@ -103,11 +104,11 @@ if [ "$SSFW_FILEPREFIX" = "" ]; then
   SSFW_FILEPREFIX="$SSFW_PREFIX" ;
 fi ;
 echo "SSFW_FILEPREFIX: firewall script prefix ($SSFW_FILEPREFIX)" ;
-FILEPREFIX="$SSFW_FILEPREFIX" ;
-echo "script.sh: $WWWROOT/$SSFW_SSFWROOT/${PREFIX}_tools-dir/${FILEPREFIX}_block-messages-sshd-kex.sh" ;
+FILEPRE="$SSFW_FILEPREFIX" ;
+echo "script.sh: $WWWROOT/$SSFW_SSFWROOT/${PREFIX}_tools-dir/${FILEPRE}_block-messages-sshd-kex.sh" ;
 echo "EXAMPLE URLS: that you could test (if installation completes)" ;
 echo "weblog-dir: $WWWURL$SSFW_SSFWROOT/${PREFIX}_log-dir/"
-echo "weburl.php: $WWWURL$SSFW_SSFWROOT/${FILEPREFIX}_stat.php"
+echo "weburl.php: $WWWURL$SSFW_SSFWROOT/${FILEPRE}_stat.php"
 echo "" ;
 
 if [ $ERROR -eq 1 -o ! "$ETEXT" = "" ]; then
@@ -119,3 +120,35 @@ read -p "Continue with installation? " REPLY ;
 if [ ! "$REPLY" = "y" -o ! "$REPLY" = "Y" ]; then
     exit ;
 fi ;
+
+mkdir "$SSFWROOT"
+mkdir "$SSFWROOT/${PREFIX}_tools-dir"
+mkdir "$SSFWROOT/${PREFIX}_log-dir"
+mkdir "$SSFWROOT/${PREFIX}_stats-dir"
+mkdir "$SSFWROOT/${PREFIX}_block-dir"
+mkdir "$SSFWROOT/${PREFIX}_archive-dir"
+mkdir "$SSFWROOT/${PREFIX}_cron-dir"
+mkdir "$SSFWROOT/${PREFIX}_cron-dir/reboot"
+mkdir "$SSFWROOT/${PREFIX}_cron-dir/15min"
+mkdir "$SSFWROOT/${PREFIX}_cron-dir/hourly"
+mkdir "$SSFWROOT/${PREFIX}_cron-dir/daily"
+mkdir "$SSFWROOT/${PREFIX}_cron-dir/weekly"
+mkdir "$SSFWROOT/${PREFIX}_cron-dir/monthly"
+
+chown -Rf $WWWUSER "$SSFWROOT"
+
+for F in $(find -name "_*.sh"); do
+  $D="$SSFWROOT/${PREFIX}_tools-dir/${FILEPRE}$F" ;
+  cp "$F" "$D" ;
+  sed -i s,SSFWROOT,${SSFWROOT},g "$D" ;
+  sed -i s,SSFWHEAD,${SSFWHEAD},g "$D" ;
+  sed -i s,PREFIX,${PREFIX},g "$D" ;
+  sed -i s,FILEPRE,${FILEPRE},g "$D" ;
+  sed -i s,WWWURL,${WWWURL},g "$D" ;
+  sed -i s,WWWUSER,${WWWUSER},g "$D" ;
+  chmod -f o+x "$D" ;
+  chown -f $WWWUSER "$D" ;
+done ;
+
+chown -Rf $WWWUSER "$SSFWROOT"
+
