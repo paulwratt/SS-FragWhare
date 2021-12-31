@@ -120,9 +120,9 @@ Only actual scripts can be run from the `~cron-dir`, not links to scripts, _AND_
 
 Certain information needs to be known _before_ running the `install.sh` script:
 
- - webserver root
- - a user and webserver group (`www:www` or `www-data:www-data`)
- - a domain or IP address (used to create URL's)
+ - a functioning webserver root (doesn't have to be Nginx)
+ - a user and webserver group (eg. `www:www` or `www-data:www-data`)
+ - a working domain or IP address (used to create URL's)
  - location within webserver root (maps path to URL)
  - SSFW unique folder prefix (folder and script access)
  - SSWF unique script prefix (optionally different)

@@ -106,10 +106,16 @@ echo "SSFW_FILEPREFIX: firewall script prefix ($SSFW_FILEPREFIX)" ;
 FILEPREFIX="$SSFW_FILEPREFIX" ;
 echo "script.sh: $WWWROOT/$SSFW_SSFWROOT/${PREFIX}_tools-dir/${FILEPREFIX}_block-messages-sshd-kex.sh" ;
 echo "EXAMPLE URLS: that you could test (if installation completes)" ;
-echo "weblog-dir: $WWWURL/$SSFW_SSFWROOT/${PREFIX}_log-dir/"
-echo "weburl.php: $WWWURL/$SSFW_SSFWROOT/${FILEPREFIX}_stat.php"
-
+echo "weblog-dir: $WWWURL$SSFW_SSFWROOT/${PREFIX}_log-dir/"
+echo "weburl.php: $WWWURL$SSFW_SSFWROOT/${FILEPREFIX}_stat.php"
 echo "" ;
+
 if [ $ERROR -eq 1 -o ! "$ETEXT" = "" ]; then
   echo "errors need fixing for: $ETEXT" ;
-fi
+  exit ;
+fi ;
+
+read -p "Continue with installation? " REPLY ;
+if [ ! "$REPLY" = "y" -o ! "$REPLY" = "Y" ]; then
+    exit ;
+fi ;
