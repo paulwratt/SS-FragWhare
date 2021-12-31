@@ -116,6 +116,7 @@ Only one script (that generates addition 404 urls for the webserver block list b
 
 Only actual scripts can be run from the `~cron-dir`, not links to scripts, _AND_ they must be owned by the webserver user, again, to help secure any expoit usage. However the `~cron-dir` is pre-setup with "hourly", "daily", "weekly", and "monthly" sub-folders to make server maintenance easier, and again, only "real" scripts will be executed.
 
+
 ## SSFW Installation
 
 Certain information needs to be known _before_ running the `install.sh` script:
@@ -128,7 +129,6 @@ Certain information needs to be known _before_ running the `install.sh` script:
  - SSWF unique script prefix (optionally different)
 
 Examples:
-
 ```
 SSFW_WWWROOT='/web/server/root' SSFW_WWWUSER='www:www' SSFW_WWWURL='http://some.url/' \
 SSFW_SSFWROOT='a/path/or/not' SSFW_PREFIX='unique-svc' SSFW_FILEPREFIX='' install.sh
