@@ -100,7 +100,7 @@ The IPv4 blocking script has a `--load` option that can be used at boot time, to
 
 Raw data block lists are available archived in both text format, and as filesystem entries, to make it easier to adapt to any one particular system.
 
-The latest version is in [ssfw-blocklists/latest.txt](https://github.com/paulwratt/SS-FragWhare/raw/main/ssfw-blocklists/latest.txt) and collected together in [ssfw-latest-blocklists.tar.gz](https://github.com/paulwratt/SS-FragWhare/raw/main/ssfw-latest-blocklists.tar.gz).
+The latest version is in [ssfw-blocklists/latest.txt](https://github.com/paulwratt/SS-FragWhare/raw/main/ssfw-blocklists/latest.txt) and collected together in [ssfw-latest-blocklists.tar.gz](https://github.com/paulwratt/SS-FragWhare/raw/main/ssfw-latest-blocklists.tar.gz). I decided to put a statically named [ssfw-blocklists/known_urls.txt](https://github.com/paulwratt/SS-FragWhare/blob/main/ssfw-blocklists/known-urls.txt) as well.
 
 
 ## SSFW Limitations
