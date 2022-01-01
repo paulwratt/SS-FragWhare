@@ -11,22 +11,28 @@ tStart=$(date +%s%N)
 D="SSFWROOT/PREFIX_log-dir"
 
 if [ "$1" = "" ]; then
-  echo "$0 _log_ (in: $D)"
-  exit
-fi
+  echo "$0 _log_ (in: $D)";
+  exit;
+fi;
 
-if [ ! -e "$D/$1" ]; then
-  echo "not found: $D/$1"
-  exit
-fi
+if [ ! -e "$D/$1" -a ! -e "$1" ]; then
+  echo "not found: $D/$1";
+  exit;
+fi;
+L="$1";
+
+if [ -e "$(realpath "$1" 2>/dev/null)" ]; then
+  D="$(dirname "$(realpath "$1")")";
+  L="$(basename "$1")";
+fi;
 
 # where are we going to dump the urls as filenames
-cd "SSFWROOT/PREFIX_block-dir/urls"
+cd "SSFWROOT/PREFIX_block-dir/urls" ;
 
 # Nginx: capture and prune both error and access logs
 #        remove some legitimate stuff in first grep.
 #        eg. '/work/www' is a web path you want pruned
-cat "$D/$1" | grep -v "PREFIX\|FILEPRE\|PHP Fatal\|#0 {main}\|Stack trace\|thrown in" | cut -d \" -f 2 | sed 's./work/www..g' | sed 's.GET ..g' | sed 's, HTTP/1.1,,g' | sed 's.Unable to open primary script: ..g' | sed 's. (No such file or directory)..g' | tr '/' ':' | xargs -r -I block_url touch block_url
+cat "$D/$L" | grep -v "PREFIX\|FILEPRE\|PHP Fatal\|#0 {main}\|Stack trace\|thrown in" | cut -d \" -f 2 | sed 's./work/www..g' | sed 's.GET ..g' | sed 's, HTTP/1.1,,g' | sed 's.Unable to open primary script: ..g' | sed 's. (No such file or directory)..g' | tr '/' ':' | xargs -r -I block_url touch block_url
 
 ### Pre-process some urls
 # legitimate items we want to ignore
