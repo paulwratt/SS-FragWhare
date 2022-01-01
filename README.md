@@ -24,7 +24,7 @@ searching "super simple firewall" now shows this project 1st.
 
 The original standalone SS-FragWhare (`sshd`) "Gerka" script is also available on the LevelOneTechs Forum, along with some studies and analysis on the IP addresses, ranges, timings, and URL attempts. There is also a commentary on why and how this project came about, as well as some resulting associated filesystem driver development discussions in the later posts of the thread.
 
-**Available Gerka's**
+**Current Standalone Gerka's**
 
 [ss-fragwhare-sshd-gerka.sh](https://github.com/paulwratt/SS-FragWhare/blob/main/ss-fragwhare-sshd-gerka.sh)
 
@@ -95,9 +95,9 @@ Not all blocked ranges are limited to assigned entity ranges (CIDR), sometimes a
 
 Web server URL's are mostly due to known exploit paths, known paths on weak hardware or firmware, or common alternate paths to web software. All were collect from actual attempts, of which there are clearly lists available (based on log file analysis).
 
-Pre-generated block lists are available archived in both text format, and as filesystem entries, to make it easier to adapt to any one particular system.
-
 The IPv4 blocking script has a `--load` option that can be used at boot time, to reinstate the block list. The `ip` command does not maintain data across reboots, which is one of the main reasons for other firewall software (like `iptables`).
+
+Raw data block lists are available archived in both text format, and as filesystem entries, to make it easier to adapt to any one particular system. The latest version is in [ssfw-blocklists/latest.txt](https://github.com/paulwratt/SS-FragWhare/raw/main/ssfw-blocklists/latest.txt) and collected together in [ssfw-latest-blocklists.tar.gz](https://github.com/paulwratt/SS-FragWhare/raw/main/ssfw-latest-blocklists.tar.gz).
 
 
 ## SSFW Limitations
