@@ -61,6 +61,7 @@ SSFW uses shell scripts which are written for `#!/bin/sh` and use the `.sh` exte
 For the PHP viewer scripts any version of PHP will work, as long as it can write its own files and contents. Everything else uses _off-the-shelf_ commands:
 
  - `ip add blackhole` (only accessible as `root`)
+ - `id` (used by installer to verify `user:group`)
  - `$$` (the currently running script process ID)
  - `ls -1` (1 per line, default formatting output used)
  - `echo -n` (used to join the `ip` output to IPv4 logs)
@@ -97,7 +98,9 @@ Web server URL's are mostly due to known exploit paths, known paths on weak hard
 
 The IPv4 blocking script has a `--load` option that can be used at boot time, to reinstate the block list. The `ip` command does not maintain data across reboots, which is one of the main reasons for other firewall software (like `iptables`).
 
-Raw data block lists are available archived in both text format, and as filesystem entries, to make it easier to adapt to any one particular system. The latest version is in [ssfw-blocklists/latest.txt](https://github.com/paulwratt/SS-FragWhare/raw/main/ssfw-blocklists/latest.txt) and collected together in [ssfw-latest-blocklists.tar.gz](https://github.com/paulwratt/SS-FragWhare/raw/main/ssfw-latest-blocklists.tar.gz).
+Raw data block lists are available archived in both text format, and as filesystem entries, to make it easier to adapt to any one particular system.
+
+The latest version is in [ssfw-blocklists/latest.txt](https://github.com/paulwratt/SS-FragWhare/raw/main/ssfw-blocklists/latest.txt) and collected together in [ssfw-latest-blocklists.tar.gz](https://github.com/paulwratt/SS-FragWhare/raw/main/ssfw-latest-blocklists.tar.gz).
 
 
 ## SSFW Limitations
