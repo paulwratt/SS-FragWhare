@@ -1,5 +1,23 @@
 # SS-FragWhare
 
+---
+
+I shall quote this “officially” 1st New Year commit message
+
+>rename: I woke up just now, looked at the last entry and ..
+>
+>just realised now that what I originally wanted is what the gerkas
+>are, a super simple firewall, the rest is just fluff from me wanting
+>to automate various stuff, generate logs and block list, and adding
+>other forms of block analysis, to simplify what you need to type on
+>(a sometimes dodgey) remote server link thats SSH but not.
+>
+>But Hey, the "fluff" has an installer now :)
+
+searching "super simple firewall" now shows this project 1st.
+
+---
+
 SSFW is a super simple firewall, based around `ip` command.
 
 Actually its a slightly brutal firewall system (ie FragHaus - "Whare" (farry) is Maori for House). Individual "Gerka" scripts maintain the defence, and can be adjusted from "soft" defence, to "brutal" defence.

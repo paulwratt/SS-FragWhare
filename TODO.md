@@ -2,6 +2,8 @@
 
 markdown style (so its pretty)
 
+ - create more standalone Gerka's
+
 ## data views
 
  - add "dont count" to IPv4 data views (PHP)
