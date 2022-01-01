@@ -1,5 +1,9 @@
 # SS-FragWhare
 
+SSFW is a super simple firewall, based around `ip` command.
+
+Actually its a slightly brutal firewall system (ie FragHaus - "Whare" (farry) is Maori for House). Individual "Gerka" scripts maintain the defence, and can be adjusted from "soft" defence, to "brutal" defence.
+
 ---
 
 I shall quote this “officially” 1st New Year commit message
@@ -17,10 +21,6 @@ I shall quote this “officially” 1st New Year commit message
 searching "super simple firewall" now shows this project 1st.
 
 ---
-
-SSFW is a super simple firewall, based around `ip` command.
-
-Actually its a slightly brutal firewall system (ie FragHaus - "Whare" (farry) is Maori for House). Individual "Gerka" scripts maintain the defence, and can be adjusted from "soft" defence, to "brutal" defence.
 
 The original standalone SS-FragWhare (`sshd`) "Gerka" script is also available on the LevelOneTechs Forum, along with some studies and analysis on the IP addresses, ranges, timings, and URL attempts. There is also a commentary on why and how this project came about, as well as some resulting associated filesystem driver development discussions in the later posts of the thread.
 
