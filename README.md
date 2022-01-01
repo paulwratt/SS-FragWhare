@@ -4,12 +4,12 @@
 
 I shall quote this “officially” 1st New Year commit message
 
->rename: I woke up just now, looked at the last entry and ..
+>gerka: I woke up just now, looked at the last entry and ..
 >
->just realised now that what I originally wanted is what the gerkas
+>just realised now that what I originally wanted is what the gerka's
 >are, a super simple firewall, the rest is just fluff from me wanting
 >to automate various stuff, generate logs and block list, and adding
->other forms of block analysis, to simplify what you need to type on
+>other forms of block analysis & feedback, to simplify what you need to type on
 >(a sometimes dodgey) remote server link thats SSH but not.
 >
 >But Hey, the "fluff" has an installer now :)
@@ -22,7 +22,11 @@ SSFW is a super simple firewall, based around `ip` command.
 
 Actually its a slightly brutal firewall system (ie FragHaus - "Whare" (farry) is Maori for House). Individual "Gerka" scripts maintain the defence, and can be adjusted from "soft" defence, to "brutal" defence.
 
-The standalone SS-FragWhare "Gerka" script is available on the LevelOneTechs Forum, along with some studies and analysis on the IP addresses, ranges, timings, and URL attempts. There is also a commentary on why and how it came about, as well as some resulting associated filesystem driver development discussions in the later posts of the thread.
+The original standalone SS-FragWhare (`sshd`) "Gerka" script is also available on the LevelOneTechs Forum, along with some studies and analysis on the IP addresses, ranges, timings, and URL attempts. There is also a commentary on why and how this project came about, as well as some resulting associated filesystem driver development discussions in the later posts of the thread.
+
+**Available Gerka's**
+
+(ss-fragwhare-sshd-gerka.sh)[https://github.com/paulwratt/SS-FragWhare/blob/main/ss-fragwhare-sshd-gerka.sh]
 
 **Super Simple SSHd IP blocking**
 
