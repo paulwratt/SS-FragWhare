@@ -26,7 +26,7 @@ The original standalone SS-FragWhare (`sshd`) "Gerka" script is also available o
 
 **Available Gerka's**
 
-(ss-fragwhare-sshd-gerka.sh)[https://github.com/paulwratt/SS-FragWhare/blob/main/ss-fragwhare-sshd-gerka.sh]
+[ss-fragwhare-sshd-gerka.sh](https://github.com/paulwratt/SS-FragWhare/blob/main/ss-fragwhare-sshd-gerka.sh)
 
 **Super Simple SSHd IP blocking**
 
