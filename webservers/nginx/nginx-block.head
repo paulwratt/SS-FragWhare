@@ -1,0 +1,79 @@
+		### dont block these, we want to capture them to
+		#   track who is doing "legitimate" index/probe
+		#   remove/edit these as your needs require
+		#   note: `access_log` does not record HTTP_HOST
+		#         `error_log`  does not record HTTP_AGENT
+		#         (if present)  both record HTTP_REFERER
+		#         (use `return 410` to manage clients)
+
+		location = /robots.txt {
+			return 404;
+		#	return 410;
+		#	access_log		/path/to/file-access.log;
+		#	error_log		/path/to/file-errors.log;
+		}
+
+		location = /sitemap.xml {
+			return 404;
+		#	return 410;
+		#	access_log		/path/to/file-access.log;
+		#	error_log		/path/to/file-errors.log;
+		}
+
+		location = /ads.txt {
+			return 404;
+		#	return 410;
+		#       access_log              /path/to/file-access.log;
+		#	error_log		/path/to/file-errors.log;
+		}
+
+		location = /security.txt {
+			return 404;
+		#	return 410;
+		#	access_log		/path/to/file-access.log;
+		#	error_log		/path/to/file-errors.log;
+		}
+
+		location = /.well-known/security.txt {
+			return 404;
+		#	return 410;
+		#	access_log		/path/to/file-access.log;
+		#	error_log		/path/to/file-errors.log;
+		}
+
+		## fake locations (`/.env` is linked to a 4Gb ISO)
+		#  search will stop on `location = ` match
+		#  `aio threads` is non-blocking, uses less RAM
+		#  but the log entries only on connection close
+
+		location ~ .txt$ {
+			try_files $uri		/.env;
+		}
+
+		location ~ .env$ {
+			try_files $uri		/.env;
+		}
+
+		location ~ .xml$ {
+			try_files $uri		/.xml;
+		}
+		
+		# These are custom multi-match uri's and so
+		# need to be removed from the pre-processor
+
+		location ~ print.css$ {
+			try_files $uri		/.css;
+		}
+
+		location ~ /phpunit {
+			try_files $uri 		/.php-html;
+		}
+
+		location ~* /pma {
+			try_files $uri		/.php-html;
+		}
+
+		location ~* /phpmyadmin {
+			try_files $uri		/.php-html;
+		}
+

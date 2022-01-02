@@ -1,0 +1,81 @@
+
+		location = /.env {
+			access_log              SSFWROOT/PREFIX_log-dir/nginx-haxors.log;
+			default_type		text/plain;
+			index			.env;
+			limit_rate		1k;
+			sendfile		on;
+			aio			threads;
+		}
+
+		location = /.css {
+			access_log              SSFWROOT/PREFIX_log-dir/nginx-haxors.log;
+			default_type		text/css;
+			index			.css;
+			limit_rate		1k;
+			sendfile		on;
+			aio			threads;
+		}
+
+		location = /.xml {
+			access_log              SSFWROOT/PREFIX_log-dir/nginx-haxors.log;
+			default_type		text/xml;
+			index			.xml;
+			limit_rate		1k;
+			sendfile		on;
+			aio			threads;
+		}
+
+		location = /.js {
+			access_log		SSFWROOT/PREFIX_log-dir/nginx-haxors.log;
+			default_type		text/javascript;
+			index			.js;
+			limit_rate		1k;
+			sendfile		on;
+			aio			threads;
+		}
+
+		location = /.json {
+			access_log		SSFWROOT/PREFIX_log-dir/nginx-haxors.log;
+			default_type		application/json;
+			index			.json;
+			limit_rate		1k;
+			sendfile		on;
+			aio			threads;
+		}
+
+		location = /.php-html {
+			access_log              SSFWROOT/PREFIX_log-dir/nginx-haxors.log;
+			default_type		text/html;
+			index			.php-html;
+			limit_rate		1k;
+			sendfile		on;
+			aio			threads;
+		}
+
+		location = /.jpg {
+			access_log              SSFWROOT/PREFIX_log-dir/nginx-haxors.log;
+			default_type		image/jpeg;
+			index			.jpg;
+			limit_rate		1k;
+			sendfile		on;
+			aio			threads;
+		}
+
+		location = /.gif {
+			access_log              SSFWROOT/PREFIX_log-dir/nginx-haxors.log;
+			default_type		image/gif;
+			index			.gif;
+			limit_rate		1k;
+			sendfile		on;
+			aio			threads;
+		}
+
+		location = /.ico {
+			access_log		SSFWROOT/PREFIX_log-dir/nginx-haxors.log;
+			default_type		image/x-icon;
+			limit_rate		1k;
+			sendfile		on;
+			aio			threads;
+		}
+
