@@ -70,7 +70,7 @@ For the PHP viewer scripts any version of PHP will work, as long as it can write
  - `tail` (10 lines by deafult, but 20 should be fine too)
  - `sort` (used as little as possible)
  - `uniq` (only used once with a 10 line tail)
- - `date +s%N%` `date -Iseconds` `date -Ihours`
+ - `date +%s%N` `date -Iseconds` `date -Ihours`
  - `sed` (in pipes. only one script uses in-place editing)
  - `find -mtime -1` (`-mtime` works with BusyBox)
  - `mkdir -p` (could be a problem on BSD systems)
