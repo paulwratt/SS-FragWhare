@@ -11,12 +11,12 @@ fi;
 
 if [ ! "$B" = "$1" -a "$(echo "$1" | grep / 2>/dev/null)" = "$1" ]; then
   FL="TRUE";
-  L=$(grep -nm1 "^$1" ../b/ipv4/.ranges.ipv4 | cut -d \: -f 1);
+  L=$(grep -nm1 "^$1" ../PREFIX-block-dir/ipv4/.ranges.ipv4 | cut -d \: -f 1);
   if [ "$L" = "" ]; then
     echo "warning: range not in blocklist";
     FL="FALSE";
   else
-    sed -i "${L}d" ../b/ipv4/.ranges.ipv4 ;
+    sed -i "${L}d" ../PREFIX-block-dir/ipv4/.ranges.ipv4 ;
     echo "range: deleted from blocklist";
   fi;
   FB="TRUE";
