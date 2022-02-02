@@ -2,8 +2,7 @@
 
 cd "SSFWROOT/PREFIX_tools-dir" ;
 # caught "litteral"  ;
-grep "x0" "SSFWROOT/PREFIX_log-dir/nginx-access.log" | cut -d \  -f 1 | xargs -
-n 1 -I {} ./PREFIX_block-ipv4-addr.sh {} false;
+grep "x0" "SSFWROOT/PREFIX_log-dir/nginx-access.log" | cut -d \  -f 1 | xargs -n 1 -I {} ./PREFIX_block-ipv4-addr.sh {} false;
 
 # "not supported"  ;
 #grep '\" 400 \|\" 405 ' "SSFWROOT/PREFIX_log-dir/nginx-access.log" | cut -d \  -f 1 | xargs -n 1 -I {} ./PREFIX_block-ipv4-addr.sh {} false;
