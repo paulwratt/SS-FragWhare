@@ -30,6 +30,7 @@ grep '/GponForm/diag_Form' "SSFWROOT/PREFIX_log-dir/haxors-access.log" | cut -d 
 
 # default "WordPress"
 grep '/wp-login.php' "SSFWROOT/PREFIX_log-dir/haxors-access.log" | cut -d \  -f 1 | xargs -n 1 -I {} ./PREFIX_block-ipv4-addr.sh {} false;
+grep '/wp-content/' /work/www/l/haxors-access.log | cut -d \  -f 1 | xargs -n 1 -I {} ./m68k-svr_block-ipv4-addr.sh {} false;
 
 # default "phpMyAdmin"
 grep '/phpMyAdmin\|/phpmyadmin' "SSFWROOT/PREFIX_log-dir/haxors-access.log" | cut -d \  -f 1 | xargs -n 1 -I {} ./PREFIX_block-ipv4-addr.sh {} false;
