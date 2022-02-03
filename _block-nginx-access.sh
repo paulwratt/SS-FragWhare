@@ -38,4 +38,10 @@ grep '/phpMyAdmin\|/phpmyadmin' "SSFWROOT/PREFIX_log-dir/haxors-access.log" | cu
 # might be useful (?)
 grep '/.env' "SSFWROOT/PREFIX_log-dir/haxors-access.log" | cut -d \  -f 1 | xargs -n 1 -I {} ./PREFIX_block-ipv4-addr.sh {} false;
 
+# not sure about this 
+# mostly this is one user with '*.linodeusercontent.com' spinups
+# using 'python-requests/2.9.1' on unique location Linode locations
+# since August 2021 (see: git-contfig.log.txt)
+#grep '\.git/config' "SSFWROOT/PREFIX_log-dir/haxors-access.log" | cut -d \  -f 1 | xargs -n 1 -I {} ./PREFIX_block-ipv4-addr.sh {} false;
+
 
