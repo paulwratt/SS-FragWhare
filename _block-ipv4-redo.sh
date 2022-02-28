@@ -26,7 +26,7 @@ if [ "$1" = "--from-reboot" ]; then
   for xADDR in $(ls -1 $D/ 2>/dev/null); do
     $B $xADDR false >> $R;
   done;
-  echo "$(date -Iseconds)#$$#0#redo#added: $(cat $R | wc -l) at reboot" >> $L;
+  echo "$(date -Iseconds)#$$#0#boot#added: $(cat $R | wc -l)" >> $L;
   exit;
 fi;
 
@@ -37,7 +37,7 @@ for xADDR in $(ls -1 $D/ 2>/dev/null); do
   if [ $S -lt 7 ]; then
     rm -f $D/$xADDR;
   else
-    M=$(grep " $xADDR " $T);
+    M=$(grep -m1 " $xADDR " $T);
     if [ -f "$L" ]; then
       if [ "$M" = "" ]; then
         echo -n "$(date -Iseconds)#$$#0#redo#" >> "$L";
