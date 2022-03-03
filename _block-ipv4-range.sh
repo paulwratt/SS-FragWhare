@@ -21,15 +21,18 @@ if [ "$1" = "load" ]; then
   exit;
 fi;
 
-IR="$1"
+IR="$1";
+EX="$2";
 D="false";
 if [ "$1" = "del" ]; then
   D="true";
   IR="$2";
+  EX="$3";
 fi;
 
 if [ "$1" = "add" ]; then
   IR="$2";
+  EX="$3";
 fi;
 
 IR=$(echo "$IR" | grep / );
@@ -89,9 +92,9 @@ fi;
 logRecord()
 {
 if [ "$1" = "true" ]; then
-  echo "$(date -Iseconds)#$$#0#range#removed: $IR" >> "$L";
+  echo "$(date -Iseconds)#$$#0#range#removed: $IR $EX" >> "$L";
 else
-  echo "$(date -Iseconds)#$$#0#range#added: $IR" >> "$L";
+  echo "$(date -Iseconds)#$$#0#range#added: $IR $EX" >> "$L";
 fi;
 }
 
@@ -113,7 +116,7 @@ if [ "$D" = "true" ]; then
   else
     ip route del blackhole "$IR";
   fi;
-  echo "removed: range: $IR";
+  echo "removed: range: $IR $EX";
 else
   if [ ! -z "$X" -a ! -z "$Z" ]; then
     echo "error: range is already blocked";
@@ -129,7 +132,7 @@ else
   else
     ip route add blackhole "$IR";
   fi;
-  echo "added: range: $IR";
+  echo "added: range: $IR $EX";
 fi;
 
 logRecord "$D" "$IR";
