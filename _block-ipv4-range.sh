@@ -83,7 +83,7 @@ if [ "$X" = "" ]; then
 fi;
 
 # FIXME: /24 implies *.0 but smaller ranges might want to be blocked
-R=$(echo "$I" | grep "\." | sed 's/.0//g' );
+R=$(echo "$I" | grep "\." | sed 's/\.0//g' );
 if [ "$R" = "" ]; then
   echo "error: not good IPv4 for range";
   exit;
