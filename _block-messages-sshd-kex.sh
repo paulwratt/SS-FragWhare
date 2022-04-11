@@ -9,8 +9,8 @@ fi;
 # what tools we use and where everything is 
 B="SSFWROOT/PREFIX_tools-dir/FILEPRE_block-ipv4-addr.sh";
 D="SSFWROOT/PREFIX_block-dir/ipv4";
-L="../PREFIX_log-dir/monitor-ipv4.sshd";
-P="../PREFIX_log-dir/monitor-ipv4.kex.pid";
+L="SSFWROOT/PREFIX_log-dir/monitor-ipv4.sshd";
+P="SSFWROOT/PREFIX_log-dir/monitor-ipv4.kex.pid";
 if [ ! -f "$L" ]; then
   touch "$L";
 #  touch "$P";
