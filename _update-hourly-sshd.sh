@@ -34,3 +34,12 @@ ls -1 "$S/sshd/" 2>/dev/null | wc -l > "$S/sshd.haxors";
 chown WWWUSER "$S/sshd.fails";
 chownWWWUSER "$S/sshd.haxors";
 
+# dump blocked log since last "clean" (archive/backup)  ;
+mkdir -p "$S/blocks";
+chown www:www "$S/blocks";
+rm -f $S/blocks/*;
+cat ../l/monitor-ipv4.sshd | cut -d \  -f 2- | sed 's/blackhole //g' | tr \/ \# | xargs -n 1 -I {} touch "$S/blocks/{}";
+ls -1 "$S/blocks/" 2>/dev/null | wc -l > "$S/blocks.ipv4";
+tail -n 1 ../l/monitor-ipv4.sshd 2>/dev/null | cut -d \# -f 1,4- | tr \# \  > "$S/blocks.last";
+chown www:www "$S/blocks.last";
+chown www:www "$S/blocks.ipv4";
