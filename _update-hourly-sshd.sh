@@ -30,7 +30,7 @@ chown WWWUSER "$S/total.ipv4";
 
 # add SSHd updates just because  ;
 cat "$L/messages.sshd" | wc -l > "$S/sshd.fails";
-ls -1 "$S/sshd/" | wc -l > "$S/sshd.haxors";
+ls -1 "$S/sshd/" 2>/dev/null | wc -l > "$S/sshd.haxors";
 chown WWWUSER "$S/sshd.fails";
 chownWWWUSER "$S/sshd.haxors";
 
