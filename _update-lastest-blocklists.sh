@@ -1,4 +1,5 @@
 #!/bin/sh
+# update in your cloned SS-FragWhare directory
 
 if [ "$1" = "" ]; then
   echo "run './FILEPRE_mk-archive-blocklists.sh' first";
@@ -25,6 +26,8 @@ cd ..
 rm -f ssfw-latest-blocklists.tar.gz
 tar -c --gzip -f "ssfw-latest-blocklists.tar.gz" "ssfw-blocklists/$1"
 
+# un-remake (remove the #) from the lines below to
+# automate your own git clone
 #git add ssfw-blocklists/latest.txt ssfw-blocklists/$N/* ssfw-latest-blocklists.tar.gz
 #git commit -m "ssfw-blocklists: updated latest to $N"
 #git push
