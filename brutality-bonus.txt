@@ -1,4 +1,4 @@
-Brutal? How brutal? Well of 3882 haxor urls served to indiviuals @ 1k/s, these over 100Mb:
+Brutal? How brutal? Well of 3882 _haxor urls_ served to indiviuals @ 1k/s, these over 100Mb:
 
 101244928 = 28 hours
 102637568
@@ -19,3 +19,16 @@ Brutal? How brutal? Well of 3882 haxor urls served to indiviuals @ 1k/s, these o
 195564912
 209518592
 299053056 = 84 Hours
+
+
+
+# from ~tools_dir/../archive_dir/
+# get (above)
+find ./ -name haxors-access.log | xargs -n 1 -I {} grep " 200 " {} | cut -d \" -f 3 | cut -d \  -f 3 | grep '^[0-9]\{9\}' | sort
+# count (all)
+find ./ -name haxors-access.log | xarg
+s -n 1 -I {} grep " 200 " {} | cut -d \" -f 3 | cut -d \  -f 3 | wc -l
+# list (all) (length>=9 == >100Mb)
+find ./ -name haxors-access.log | xarg
+s -n 1 -I {} grep " 200 " {} | cut -d \" -f 3 | cut -d \  -f 3 | less
+
