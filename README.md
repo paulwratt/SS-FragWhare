@@ -4,6 +4,8 @@ SSFW is a super simple firewall, based around `ip` command.
 
 Actually its a slightly brutal firewall system (ie FragHaus - "Whare" (farry) is Maori for House). Individual "Gerka" scripts maintain the defence, and can be adjusted from "soft" defence, to "brutal" defence.
 
+([Wendel of LevelOneTech fame assessment of _a brutally simple firewall_](https://www.youtube.com/watch?v=7-e9abdlTes&t=709s))
+
 ---
 
 I shall quote this “officially” 1st New Year commit message
@@ -109,15 +111,15 @@ At the moment only IPv4 addresses are processed and blocked. It is planned to al
 
 Currently only Nginx log files have been tested against, with the target of most common (or any) web servers being added, since the analysers are SH shell scripts, this task is relatively simple.
 
-In actual use, a web server without any content, rotates its `/var/log/messages` log files at a minimum of every three hours (3 hrs), if the server is being hit relatively hard (ie. multiple per second hits from the same or different IPv4 locations).
+In actual use, a (Alpine Linux Nginx) web server without any content, rotates its `/var/log/messages` log files at a minimum of every three hours (3 hrs), if the server is being hit relatively hard (ie. multiple per second hits from the same or different IPv4 locations).
 
 Currently only the `sshd` log entries are analysed via _service_ processes ("Gerka" scripts). The success of that script, via its per second setting, is (to a certain degree) dependant on some conditions which are out of any scope of control.
 
-For example, on a 1Gb single core x64 VM running Alpine Linux, after a few thousand blocked IP address have been processed, a setting of less that 5 seconds can cause the script to miss heavy (per second) `sshd` hits, and maybe caused by underlying system or hardware write caching limitations. ie. if they are too fast, the time between actual presence of a log entry will be longer than the attack attempts.
+For example, on a 1Gb single core x64 VM running Alpine Linux, after a few thousand blocked IP address have been processed, a setting of less that 5 seconds can cause the script to miss heavy (per second) `sshd` hits, and may be caused by underlying system or hardware write caching limitations. ie. if they are too fast, the time between actual (write) presence of a log entry will be longer than the time taken to conduct attack attempts.
 
-Also over time, one of the checks will incrementally consume more processor CPU % usage (but not memory % usage). Cleaning of the log directory at least every month solves (resets) this problem. A fresh install of SSFW will consume about 0.15% of CPU, while after six months the end of month processing can consume about 10-15% (on a single core VM) on-the-hour via the cronjob processes.
+Also over time, one of the checks will incrementally consume more processor CPU % usage (but not memory % usage). Cleaning of the log directory at least every month solves (resets) this problem. A fresh install of SSFW will consume about 0.15% of CPU, while after six months the end of month processing can consume about 10-15% (on a single core VM) on-the-hour via the cronjob processes. After a year this is upto 25% every 15 minutes, for less than a minute (with 11,000 blocked IPv4).
 
-Currently, the `sshd` key exchange (`kex`) failure check and resulting IPv4 block is a manual operation. Realistically this check only needs to be done once per every second log rotation (when there is only one backup log file). If you attempt to initialize your own SSH `kex` and it fails, that IPv4 will be present in the _failures_ sent to the system logs.
+Currently, the `sshd` key exchange (`kex`) failure check and resulting IPv4 block is a manual operation. Realistically (on Alpine Linux) this check only needs to be done once per every second log rotation (when there is only one backup log file). If you attempt to initialize your own SSH `kex` and it fails, that IPv4 will be present in the _failures_ sent to the system logs.
 
 _ANY_ failed `sshd` attempt will also be blocked by the SSH "gerka" service, based on the number of times the that IPv4 is present in the log file, and the setting in the script. A setting of 1 is _brutal_ , and actually means 2 entries. This is fine because `sshd` logs a _disconnect_ for every _failed_ attempt to login.
 
