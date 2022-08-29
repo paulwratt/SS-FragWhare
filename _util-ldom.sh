@@ -50,19 +50,18 @@ isLeapYear () {
 lastDayOfMonth () {
   Y=$(echo $1 | cut -d \- -f 1)
   M=$(echo $1 | cut -d \- -f 2)
-  M=$(($M + 0))
   case $M in
-    1)  DoM=31 ;;       # January
-    3)  DoM=31 ;;       # March
-    5)  DoM=31 ;;       # May
-    7)  DoM=31 ;;       # July
-    8)  DoM=31 ;;       # August
-    10) DoM=31 ;;       # October
-    12) DoM=31 ;;       # December
-    2)  DoM=28          # February
-        isLeapYear "$Y" && DoM=29
-	;;
-    *)  DoM=30 ;;       # April, June, September, November
+    1|01)  DoM=31 ;;       # January
+    3|03)  DoM=31 ;;       # March
+    5|05)  DoM=31 ;;       # May
+    7|07)  DoM=31 ;;       # July
+    8|08)  DoM=31 ;;       # August
+    10)    DoM=31 ;;       # October
+    12)    DoM=31 ;;       # December
+    2|02)  DoM=28          # February
+           isLeapYear "$Y" && DoM=29
+                  ;;
+    *)     DoM=30 ;;       # April, June, September, November
   esac
   echo "$DoM"
 }
