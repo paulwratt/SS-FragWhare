@@ -19,6 +19,7 @@ cp /var/log/www/nginx-*.log ./l/
 
 # download all web pages, archive as static html
 wget "WWWURLSSFWHEAD/FILEPRE_stats.php"
+wget "WWWURLSSFWHEAD/FILEPRE_blocks.php"
 wget "WWWURLSSFWHEAD/FILEPRE_browsers.php"
 wget "WWWURLSSFWHEAD/FILEPRE_haxors.php"
 wget "WWWURLSSFWHEAD/FILEPRE_sshd.php"
