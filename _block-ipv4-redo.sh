@@ -37,6 +37,14 @@ for xADDR in $(ls -1 $D/ 2>/dev/null); do
   if [ $S -lt 7 ]; then
     rm -f $D/$xADDR;
   else
+    if [ $S -gt 15 ]; then
+      X=$(echo "$xADDR" | sed 's/\(\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}\).\(\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}\)/\3/gp' | uniq);
+      if [ -n "$D/$X" ]; then
+        cp "$D/$xADDR" "$D/$X"
+      fi;
+      rm -f $D/$xADDR;
+      xADDR="$X";
+    fi;
     M=$(grep -m1 " $xADDR " $T);
     if [ -f "$L" ]; then
       if [ "$M" = "" ]; then
