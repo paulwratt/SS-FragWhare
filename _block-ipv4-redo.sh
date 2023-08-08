@@ -27,6 +27,10 @@ if [ "$1" = "--from-reboot" ]; then
     $B $xADDR false >> $R;
   done;
   echo "$(date -Iseconds)#$$#0#boot#added: $(cat $R | wc -l)" >> $L;
+  if [ "$2" = "--include-ranges" ]; then
+    cat $D/.ranges.ipv4 | xargs -n 1 -I {} ./PREFIX_block-ipv4-range.sh {} >> $R.ranges
+    echo "$(date -Iseconds)#$$#0#redo#added: $(grep "^added:" $R.ranges | wc -l) ranges at reboot" >> $L;
+  fi
   exit;
 fi;
 
