@@ -28,5 +28,6 @@ fi;
 CIDR="$(echo "$A" | cut -d \" -f 10)";
 ASN="$(echo "$A" | cut -d \" -f 13 | grep -E -o "[0-9]{3,6}")";
 
-curl -s "https://www.dan.me.uk/bgplookup?asn=$ASN" | grep '^<tr><td' | grep -v : | cut -d \  -f 4 ;
+#curl -s "https://www.dan.me.uk/bgplookup?asn=$ASN" | grep '^<tr><td' | grep -v : | cut -d \  -f 4 ;
+curl -s "https://www.dan.me.uk/bgplookup?asn=$ASN" | grep -v '<' |grep ".*/" | cut -c -18 | tr -d \  ;
 
